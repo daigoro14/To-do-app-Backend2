@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/style.css">
+    <title>Posts</title>
+</head>
+<body>
+    <%- include("fragments/header.ejs") %>
+
+    <div id="content">
+        <h1>Create To Do</h1>
+        <br>
+        <form method="POST" action="/page/list">
+            <textarea name="toDo" placeholder="What do you need to get done?" required></textarea>
+            <button type="submit">Post</button>
+        </form>
+        <% if (locals.entries) { %>
+            <div id="toDoList">
+                <% entries.forEach(entry => { %>
+                    <div class="toDoBox">
+                        <p><%= entry.toDo %></p>
+                    </div>
+                <% }) %>
+            </div>
+        <% } %>
+    </div>
+</body>
+</html>
